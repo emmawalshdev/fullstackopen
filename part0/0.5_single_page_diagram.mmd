@@ -2,7 +2,7 @@ sequenceDiagram
     participant browser
     participant server
     
-    browser->>server: https://studies.cs.helsinki.fi/exampleapp/notes
+    browser->>server: https://studies.cs.helsinki.fi/exampleapp/spa
     activate server
     server-->>browser: HTML document
     deactivate server
@@ -12,7 +12,7 @@ sequenceDiagram
     server-->>browser: the css file
     deactivate server
     
-    browser->>server: https://studies.cs.helsinki.fi/exampleapp/main.js
+    browser->>server: https://studies.cs.helsinki.fi/exampleapp/spa.js
     activate server
     server-->>browser: the JavaScript file
     deactivate server
@@ -21,18 +21,18 @@ sequenceDiagram
     
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
     activate server
-    server-->>browser: [{ "content": "dodo", "date": "2023-01-29T14:16:15.720Z" }, ... ]
+    server-->>browser: [{"content":"wesh gro","date":"2023-01-29T14:47:11.566Z"}...]
     deactivate server    
 
     Note right of browser: The browser executes the callback function that renders the notes 
 
     Note right of browser: The user enters a note and submits the form. 
 
-    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
-    Note right of browser: the browser sends the new note to the server address new_note (note: not contents here).
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+    Note right of browser: The POST request to the new address contains the new note new_note. This JSON contains both the note data and a timestamp.
     
     activate server
-    server-->>browser: 302 response, the server asks the browser to carry out a new HTTP GET request to the address /notes. The browser reloads the notes page.
+    server-->>browser: 201 response. No redirect is requested.
     deactivate server
 
     browser->>server: https://studies.cs.helsinki.fi/exampleapp/main.css
