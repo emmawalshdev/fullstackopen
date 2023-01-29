@@ -35,7 +35,19 @@ sequenceDiagram
     server-->>browser: 302 response, the server asks the browser to carry out a new HTTP GET request to the address /notes. The browser reloads the notes page.
     deactivate server
 
+    browser->>server: https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate server
+    server-->>browser: the css file is fetched
+    deactivate server
+    
+    browser->>server: https://studies.cs.helsinki.fi/exampleapp/main.js
+    activate server
+    server-->>browser: the JavaScript file is fetched
+    deactivate server
+    
+    Note right of browser: The browser starts executing the JavaScript code that fetches the JSON from the server
+    
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
     activate server
     server-->>browser: [{ "content": "dodo", "date": "2023-01-29T14:16:15.720Z" }, ... ]
-    deactivate server    
+    deactivate server 
