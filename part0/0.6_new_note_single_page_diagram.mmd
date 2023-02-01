@@ -26,9 +26,8 @@ sequenceDiagram
 
     Note right of browser: The browser executes the callback function that renders the notes 
 
-    Note right of browser: The user enters a note and submits the form. 
-
     browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+    Note right of browser: The user enters a note and submits the form. 
     Note right of browser: The POST request to the new address contains the new note ('new_note'). This JSON contains both the note data and a timestamp.
     
     activate server
