@@ -21,18 +21,17 @@ sequenceDiagram
     
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
     activate server
-    server-->>browser: [{ "content": "dodo", "date": "2023-01-29T14:16:15.720Z" }, ... ]
+    server-->>browser: [{content: "", date: "2023-02-01T15:05:44.718Z"}, {content: "", date: "2023-02-01T15:22:35.945Z"},…]
     deactivate server    
 
     Note right of browser: The browser executes the callback function that renders the notes 
 
-    Note right of browser: The user enters a note and submits the form. 
-
     browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
-    Note right of browser: the browser sends the new note to the server address new_note (note: not contents here).
+        Note right of browser: The user enters a note and submits the form. 
+    Note right of browser: The browser sends the new note to the server address new_note (note: not contents here).
     
     activate server
-    server-->>browser: 302 response, the server asks the browser to carry out a new HTTP GET request to the address /notes. The browser reloads the notes page.
+    server-->>browser: 302 response. The server requests a new HTTP GET request browser, to fetch the notes (location - browser/exampleapp/notes) & reload the browser.
     deactivate server
 
     browser->>server: https://studies.cs.helsinki.fi/exampleapp/main.css

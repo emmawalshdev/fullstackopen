@@ -21,7 +21,7 @@ sequenceDiagram
     
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
     activate server
-    server-->>browser: [{"content":"wesh gro","date":"2023-01-29T14:47:11.566Z"}...]
+    server-->>browser: [{content: "Hola, holita, Bart", date: "2023-02-01T15:03:49.584Z"},…]
     deactivate server    
 
     Note right of browser: The browser executes the callback function that renders the notes 
@@ -29,25 +29,11 @@ sequenceDiagram
     Note right of browser: The user enters a note and submits the form. 
 
     browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
-    Note right of browser: The POST request to the new address contains the new note new_note. This JSON contains both the note data and a timestamp.
+    Note right of browser: The POST request to the new address contains the new note ('new_note'). This JSON contains both the note data and a timestamp.
     
     activate server
     server-->>browser: 201 response. No redirect is requested.
     deactivate server
 
-    browser->>server: https://studies.cs.helsinki.fi/exampleapp/main.css
-    activate server
-    server-->>browser: the css file is fetched
-    deactivate server
-    
-    browser->>server: https://studies.cs.helsinki.fi/exampleapp/main.js
-    activate server
-    server-->>browser: the JavaScript file is fetched
-    deactivate server
-    
-    Note right of browser: The browser starts executing the JavaScript code that fetches the JSON from the server
-    
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
-    activate server
-    server-->>browser: [{ "content": "dodo", "date": "2023-01-29T14:16:15.720Z" }, ... ]
-    deactivate server 
+    Note right of browser: JavaScript is used it fetch & render the data from the server.
+
